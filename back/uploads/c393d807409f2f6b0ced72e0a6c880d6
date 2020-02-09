@@ -1,0 +1,48 @@
+셋팅법
+1. 깃설치
+2. 소스트리설치 및 깃이랑 연동
+4. 비주얼 스튜디오 설치
+5. yarn 설치
+yarn create react-app practice-react
+6. 비주얼 스튜디오로 설치된 practice-react를 열고
+yarn start
+7. 소스트리와 git허브 연동하기
+	1)도구->옵션->인증->추가->깃허브 정보입력
+	* 사용자명은 깃허브의 이메일주소가 아니라 닉네임!
+	2)원격->추가->practice-react폴더경로->
+	원격호스트 선택(git) 확인.
+8. 연동확인하기
+push -> 모두선택 -> 확인 -> 인터넷 git에서 푸쉬된 것 확인.
+
+---------------------------------------------------------------------
+
+1. 비주얼 스튜디오에서 practice-react 열기
+2. public 폴더안의 내용 다 지우기
+3. public 폴더안에 index.html 생성 및 html5 셋팅
+4. 비주얼 스튜디오 API 셋팅
+	1) Prettier 설치 -> manage -> configure extention setting ->
+	search에 format 찾기 -> format on save 체크
+
+5. src에 App.js / index.js 제외하고 전부 삭제
+
+6. src의 index.js 내용을 아래와 같이 변경
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
+7. src의 App.js 내용 아래와 같이 변경 후 웹 localhost:3000에서 확인
+import React from "react";
+
+function App() {
+  return <h1>hello react</h1>;
+}
+
+export default App;
+
+
+8. 소스트리에서 커밋-> 모두 스테이지에 올리기 -> 커밋 -> 푸쉬 -> 깃허브에서 확인
+* auto push는 소스트리 맨 하단 창에 "origin/master에 바뀐 내용 즉시 푸시" 체크하면 가능
+

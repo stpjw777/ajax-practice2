@@ -4,8 +4,17 @@ const multer = require("multer");
 
 const app = express();
 const port = 8001;
-const upload = multer();
+//const upload = multer({ dest: "uploads/" });
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+const upload = multer({ storage: storage });
 app.use(cors());
 app.use(express.json()); //bodyparse 대신 들어간거
 app.use(express.urlencoded({ extended: false })); //
@@ -37,6 +46,12 @@ app.post("/form", upload.none(), (req, res) => {
   res.send(
     `정상적으로 데이터를 전송받았습니다. name ${req.body.name}, birth ${req.body.birth}`
   );
+});
+app.post("/upload", upload.single("userfile"), (req, res) => {
+  res.send(
+    "정상적으로 업로드가 완료되었습니다. 파일명: " + req.file.originalname
+  );
+  console.log(req.file);
 });
 
 app.listen(port, () => console.log(`server running ... Port : ${port}`));

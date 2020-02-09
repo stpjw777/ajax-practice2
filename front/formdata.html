@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>formdata</title>
+  </head>
+  <body>
+    <script>
+      const xhr = new XMLHttpRequest();
+      let formData = new FormData();
+      formData.append("name", "pjw");
+      formData.append("birth", "1990");
+      //name : "pjw" birth : "1990"
+      xhr.open("POST", "http://localhost:8001/form");
+      xhr.send(formData);
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === xhr.DONE) {
+          //200은 데이터를 정상적으로 받은거 201은 정상적으로 데이터를 생성한거
+          if (xhr.status === 200 || xhr.status === 201) {
+            console.log(xhr.responseText);
+          } else {
+            console.log(xhr.responseText);
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
